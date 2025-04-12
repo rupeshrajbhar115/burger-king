@@ -40,10 +40,20 @@
         .down_arrow{
             margin: auto;
             padding: 25px 0;
+            animation: moveDown 1s infinite alternate;
         }
+        @keyframes moveDown {
+            0% {
+              transform: translateY(0px);
+            }
+            100% {
+              transform: translateY(15px);
+            }
+          }
 
         .home_avatar_section{
             width: 100%;
+            margin-top: 10px;
             position: relative;
             .home_avatar_1{
                 color: #fff;
@@ -98,7 +108,7 @@
                         width: 100%;
                         height: 51px;
                         font-size: 16px;
-                        color: #1D1D1B;
+                        color: #fff;
                         padding: 12px 15px;
                         border-radius: 8px;
                         border: 1px solid #444141;
@@ -106,6 +116,7 @@
                         background-color: #262427;
                         &:focus{
                             outline: none;
+                            background-color: transparent;
                         }
                         
                     }
@@ -156,20 +167,20 @@
             }
             
             ::-webkit-input-placeholder { /* Chromee/Opera/Safari */
-                font-size: 16px;
-                color: #fff;
+                font-size: 2px;
+                color: #fff !important;
               }
               ::-moz-placeholder { /* Firefox 19+ */
                 font-size: 16px;
-                color: #fff;
+                color: #fff !important;
               }
               :-ms-input-placeholder { /* IE 10+ */
                 font-size: 16px;
-                color: #fff;
+                color: #fff !important;
               }
               :-moz-placeholder { /* Firefox 18- */
                 font-size: 16px;
-                color: #fff;
+                color: #fff !important;
               }
         }
     }
