@@ -21,8 +21,9 @@ export default function HomePage({ onNext }: { onNext: () => void }) {
           <div className={styles.banner_title}>
             <h4 className={styles.banner_title_text}>transform your photos into <br/> korean masterpieces.</h4>
           </div>
-
+      
           <img src={DownArrow.src} className={styles.down_arrow} alt="DownArrow" />
+          {/* <img src={DownArrow.src} className={styles.down_arrow} alt="DownArrow" /> */}
 
           <div className={styles.home_avatar_section}>
             <h2 className={styles.home_avatar_1}>Unleash your <br/> avatar, K-STYLE!</h2>
