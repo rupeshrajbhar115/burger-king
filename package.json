@@ -16,6 +16,7 @@
     "next": "15.2.5",
     "openai": "^4.93.0",
     "react": "^19.0.0",
+		"react-hook-form": "^7.45.4",
     "react-dom": "^19.0.0",
     "react-slick": "^0.30.3",
     "sass": "^1.86.3",
