@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
 import styles from "../../styles/pages/home.module.scss";
 import Grnderbanner from "../img/korean_art.jpg";
@@ -15,7 +15,7 @@ export default function Gender({ onNext }: { onNext: () => void }){
 
     const handleSelectGender = (gender: string) => {
       setSelectedGender(gender);
-      console.log("Selected Gender is:", gender);
+      localStorage.setItem("selectedGender", gender); 
     };
 
     return(
@@ -45,13 +45,12 @@ export default function Gender({ onNext }: { onNext: () => void }){
         </div>
 
         <div className={styles.btn_section_next_small}>
-        <div
-          id="nextBtn"
-          onClick={selectedGender ? () => onNext(selectedGender) : undefined}
-          className={styles.next}
-        >
-          Next
+            <div id="nextBtn"
+                onClick={selectedGender ? () => onNext(selectedGender) : undefined}
+                className={styles.next}
+                >
+                Next
+            </div>
         </div>
-      </div>
     </div>);
 }

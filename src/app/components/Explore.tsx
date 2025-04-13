@@ -1,13 +1,37 @@
 
+'use client';
+import React, { useRef, useEffect, useState } from 'react';
+import html2canvas from 'html2canvas';
 import CustomButton from "./CustomButton";
-
 import styles from "../../styles/pages/home.module.scss";
 import Grnderbanner from "../img/korean_art.jpg";
 import Download from "../img/download_img.jpg";
 import DownloadBtn from "../img/download.png";
 import Insta from "../img/insta.png";
 export default function Explore(){
-    return(<div className={styles.explore}>
+  const divRef = useRef(null);
+  const [framePath, setFramePath] = useState<string | null>(null);
+
+  const handleDownload = async () => {
+    if (!divRef.current) return;
+
+    const canvas = await html2canvas(divRef.current);
+    const dataURL = canvas.toDataURL('image/png');
+
+    const link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'combined-image.png';
+    link.click();
+  };
+
+  useEffect(() => {
+    const storeAvatarFrame = localStorage.getItem("selectedAvatarFrame");
+    console.log(storeAvatarFrame, "storeAvatarFrame");
+    setFramePath(storeAvatarFrame); // Set to state
+  }, []);
+
+    return(
+    <div className={styles.explore}>
       <div className={styles.gender_banner}>
             <img src={Grnderbanner.src} alt="Grnderbanner" />
             <div className={styles.gender_title}>
@@ -16,7 +40,12 @@ export default function Explore(){
             </div>
       </div>
       <div className={styles.download_img}>
-          <img src={Download.src} alt="Download" /> 
+          <div className={styles.download_frame} ref={divRef}>
+              {framePath && (
+                <img src={framePath} alt="Selected Avatar Frame" />
+              )}
+              <img src={Download.src} alt="Download" className={styles.avatar_img_final} /> 
+          </div>
       </div>
       <div className={styles.participate_section}>
         <h3>You can also participate in our giveaway</h3>
@@ -46,7 +75,7 @@ export default function Explore(){
           </div>
       </div>
       <div className={`${styles.btn_section}`}>
-        <div className={styles.download_btn}><img src={DownloadBtn.src} alt="DownloadBtn" />  Download My K-Avatar</div>
+        <div className={styles.download_btn} onClick={handleDownload}><img src={DownloadBtn.src} alt="DownloadBtn" />  Download My K-Avatar</div>
         <div className={styles.share_btn}><img src={Insta.src} alt="Insta" />Share with your friends</div>
       </div>
       <div style={{bottom:0, width:'100%', display:'flex', justifyContent:'space-between', height:'54px', padding:'20px 12px', marginTop:'auto'}}>

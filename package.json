@@ -11,13 +11,14 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
     "formidable": "^3.5.2",
+    "html2canvas": "^1.4.1",
     "lucide-react": "^0.487.0",
     "multer": "^1.4.5-lts.2",
     "next": "15.2.5",
     "openai": "^4.93.0",
     "react": "^19.0.0",
-		"react-hook-form": "^7.45.4",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.45.4",
     "react-slick": "^0.30.3",
     "sass": "^1.86.3",
     "slick-carousel": "^1.8.1"

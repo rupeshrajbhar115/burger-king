@@ -18,6 +18,12 @@ export default function FlowManager() {
       window.history.pushState({ step: nextStep }, `Step ${nextStep}`);
       setStep(nextStep);
     };
+
+    const goBack = () => {
+      const prevStep = step - 1;
+      window.history.pushState({ step: prevStep }, `Step ${prevStep}`);
+      setStep(prevStep);
+    };
   
     // Listen for browser back button
     useEffect(() => {
@@ -43,11 +49,11 @@ export default function FlowManager() {
     <div style={{minHeight:'100vh',display:'flex', flexDirection:'column'}}>
       {step === 1 && <HomePage onNext={goNext} />}
       {step === 2 && <Gender onNext={goNext}/>}
-      {step === 3 && <Avatar onNext={goNext} />}
-      {step === 4 && <Personal onNext={goNext} />}
-      {step === 5 && <FileUpload onNext={goNext} />}
-      {step === 6 && <Download onNext={goNext} />}
-      {step === 7 && <Explore />}
+      {step === 3 && <Avatar onNext={goNext} onBack={goBack} />}
+      {/* {step === 4 && <Personal onNext={goNext} />} */}
+      {step === 4 && <FileUpload onNext={goNext} onBack={goBack} />}
+      {step === 5 && <Download onNext={goNext} />}
+      {step === 6 && <Explore />}
     </div>
 
     </div>
