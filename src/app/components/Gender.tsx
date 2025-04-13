@@ -46,7 +46,7 @@ export default function Gender({ onNext }: { onNext: () => void }){
 
         <div className={styles.btn_section_next_small}>
             <div id="nextBtn"
-                onClick={selectedGender ? () => onNext(selectedGender) : undefined}
+                onClick={selectedGender ? onNext : undefined}
                 className={styles.next}
                 >
                 Next
